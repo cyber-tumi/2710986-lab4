@@ -5,6 +5,7 @@
     border: 6px solid green;
     border-top: 6px solid #3498db;
     border-radius: 50%;
+    margin : 20px auto;
     animation: spin 1s linear infinite; /* Required */
 }
 
@@ -16,6 +17,7 @@
 .country-card {
     background-color: white;
     padding: 20px;
+    margin : 20px 0;
     border-radius: 10px;
 }
 

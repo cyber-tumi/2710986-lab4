@@ -5,15 +5,12 @@ async function searchCountry(countryName) {
     const errorMessage = document.getElementById('error-message');
 
     try {
-        // Clear previous results
         countryInfo.innerHTML = "";
         borderSection.innerHTML = "";
         errorMessage.textContent = "";
 
-        // Show loading spinner
         spinner.classList.remove('hidden');
 
-        // Fetch country data
         const response = await fetch(`https://restcountries.com/v3.1/name/${countryName}`);
         if (!response.ok) {
             throw new Error("Country not found");
@@ -22,7 +19,6 @@ async function searchCountry(countryName) {
         const data = await response.json();
         const country = data[0];
 
-        // Update country info
         countryInfo.innerHTML = `
             <h2>${country.name.common}</h2>
             <p><strong>Capital:</strong> ${country.capital ? country.capital[0] : "N/A"}</p>
@@ -31,7 +27,6 @@ async function searchCountry(countryName) {
             <img src="${country.flags.svg}" alt="${country.name.common} flag" width="150">
         `;
 
-        // Fetch bordering countries if they exist
         if (country.borders) {
             for (let borderCode of country.borders) {
                 const borderResponse = await fetch(`https://restcountries.com/v3.1/alpha/${borderCode}`);
@@ -50,12 +45,10 @@ async function searchCountry(countryName) {
     } catch (error) {
         errorMessage.textContent = "Unable to fetch country data. Please try again.";
     } finally {
-        // Hide loading spinner
         spinner.classList.add('hidden');
     }
 }
 
-// Search button click
 document.getElementById('search-btn').addEventListener('click', () => {
     const country = document.getElementById('country-input').value.trim();
     if (country) {
@@ -63,7 +56,6 @@ document.getElementById('search-btn').addEventListener('click', () => {
     }
 });
 
-// Press Enter in input field
 document.getElementById('country-input').addEventListener('keypress', (e) => {
     if (e.key === 'Enter') {
         const country = document.getElementById('country-input').value.trim();
