@@ -2,7 +2,7 @@
     /* Your styling */
     width: 50px;
     height: 50px;
-    border: 6px solid #ddd;
+    border: 6px solid green;
     border-top: 6px solid #3498db;
     border-radius: 50%;
     animation: spin 1s linear infinite; /* Required */
